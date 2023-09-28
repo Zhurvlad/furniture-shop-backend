@@ -1,18 +1,18 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsString, Max, Min, MinLength } from 'class-validator';
+import { IsBoolean, IsNotEmpty, IsNumber, IsString, Max, Min, MinLength } from 'class-validator';
+import {faker} from '@faker-js/faker'
 
-
-export class CreateFurnitureDto {
+export class CreateSofasDto {
   @ApiProperty({ example: 'Динс Velvet Yellow' })
   @IsNotEmpty()
   @IsString()
   @MinLength(6)
-  title: string;
+  name: string;
 
   @ApiProperty({ example: 'Диваны' })
   @IsNotEmpty()
   @IsString()
-  sub_category: string;
+  category: string;
 
   @ApiProperty({ example: 1 })
   @Max(5)
@@ -33,7 +33,7 @@ export class CreateFurnitureDto {
   @ApiProperty({ example: 56 })
   @IsNumber()
   @IsNotEmpty()
-  is_stocks: number;
+  in_stocks: number;
 
 
   @ApiProperty({ example: '218 СМ\n' + '×\n' + '95 СМ\n' + '×\n' + '90 СМ' })
@@ -54,5 +54,25 @@ export class CreateFurnitureDto {
   @ApiProperty({example: 37990})
   @IsNumber()
   oldPrice?: number
+
+
+  @ApiProperty({example: true})
+  @IsBoolean()
+  @IsNotEmpty()
+  bestseller: boolean;
+
+
+  @ApiProperty({example: true})
+  @IsBoolean()
+  @IsNotEmpty()
+  new: boolean;
+
+
+  @ApiProperty({example: faker.image.city()})
+  @IsString()
+  @IsNotEmpty()
+  images: string
+
+
 
 }

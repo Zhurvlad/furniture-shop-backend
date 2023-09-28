@@ -7,7 +7,7 @@ import { UpdateFurnitureDto } from './dto/update-furniture.dto';
 export class FurnitureController {
   constructor(private readonly furnitureService: FurnitureService) {}
 
-  @Post()
+  /*@Post()
   create(@Body() createFurnitureDto: CreateFurnitureDto) {
     return this.furnitureService.create(createFurnitureDto);
   }
@@ -30,5 +30,5 @@ export class FurnitureController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.furnitureService.remove(+id);
-  }
+  }*/
 }
