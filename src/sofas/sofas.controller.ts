@@ -24,8 +24,8 @@ export class SofasController {
   @ApiTags('Sofas')
   @ApiOkResponse({ type: BestsellersResponse })
   @Get('/bestsellers')
-  getBestsellers() {
-    return this.sofasService.bestsellers();
+  getBestsellers(@Query() query) {
+    return this.sofasService.bestsellers(query);
   }
 
   @ApiTags('Sofas')

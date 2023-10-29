@@ -2,6 +2,7 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import * as bcrypt from 'bcrypt'
 import { CreateUserDto } from '../users/dto/create-user.dto';
+import { User } from '../users/users.model';
 
 @Injectable()
 export class AuthService {
@@ -34,6 +35,18 @@ export class AuthService {
 
   async register(userDto: CreateUserDto){
     const hashedPassword = await bcrypt.hash(userDto.password, 10)
+
+
+    const existingByUserName = await this.usersService.findOne({where: {username: userDto.username}})
+    const existingByEmail = await this.usersService.findOne({where: {email: userDto.email}})
+
+    if(existingByUserName){
+      return {warningMessage: 'Пользователь с таким именем существует'}
+    }
+
+    if(existingByEmail){
+      return {warningMessage: 'Пользователь с таким email уже существует'}
+    }
 
     const newUser = await this.usersService.create({...userDto, password: hashedPassword})
 

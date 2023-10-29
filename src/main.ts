@@ -19,6 +19,11 @@ async function bootstrap() {
   app.use(passport.session())
 
 
+  app.enableCors({
+    credentials: true,
+    origin: ['http://localhost:3003']
+  })
+
   const config = new DocumentBuilder()
     .setTitle('Furniture shop')
     .setDescription('Api Documentation')
@@ -31,6 +36,6 @@ async function bootstrap() {
 
   /*app.useGlobalPipes(new ValidateInputPipe());*/
   app.useGlobalPipes(new ValidationPipe());
-  await app.listen(3000);
+  await app.listen(3002);
 }
 bootstrap();

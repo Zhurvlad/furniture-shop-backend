@@ -20,8 +20,11 @@ export class SofasService {
   }
 
 
-  async bestsellers(): Promise<{ rows: SofasModel[]; count: number }>{
-    return await this.sofasRepository.findAndCountAll({where: {bestseller: true}})
+  async bestsellers(query: ISofasQuery): Promise<{ rows: SofasModel[]; count: number }>{
+    const limit = +query.limit
+    const offset = +query.offset * 20
+
+    return await this.sofasRepository.findAndCountAll({where: {bestseller: true}, limit, offset})
   }
 
   async new(): Promise<{ rows: SofasModel[]; count: number }>{
