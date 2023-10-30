@@ -1,4 +1,4 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import * as bcrypt from 'bcrypt'
 import { CreateUserDto } from '../users/dto/create-user.dto';
@@ -13,13 +13,13 @@ export class AuthService {
     const user = await this.usersService.findOne({where: {username}})
 
     if(!user) {
-      throw new UnauthorizedException('Invalid credentials')
+      throw new UnauthorizedException('*Неправильный логин или пароль!')
     }
 
     const passwordMach = await bcrypt.compare(password, user.password)
 
     if(!passwordMach){
-      throw new UnauthorizedException('Invalid credentials')
+      throw new UnauthorizedException('*Неправильный логин или пароль!')
     }
 
     if(user && passwordMach){
@@ -40,12 +40,18 @@ export class AuthService {
     const existingByUserName = await this.usersService.findOne({where: {username: userDto.username}})
     const existingByEmail = await this.usersService.findOne({where: {email: userDto.email}})
 
+    if(existingByUserName && existingByEmail ){
+      throw new HttpException('Пользователь с таким именем и email уже существует', HttpStatus.FORBIDDEN);
+    }
+
     if(existingByUserName){
-      return {warningMessage: 'Пользователь с таким именем существует'}
+      throw new HttpException('Пользователь с таким именем существует', HttpStatus.FORBIDDEN);
+      /*return {warningMessage: 'Пользователь с таким именем существует'}*/
     }
 
     if(existingByEmail){
-      return {warningMessage: 'Пользователь с таким email уже существует'}
+      throw new HttpException('Пользователь с таким email уже существует', HttpStatus.FORBIDDEN);
+      /*return {warningMessage: 'Пользователь с таким email уже существует'}*/
     }
 
     const newUser = await this.usersService.create({...userDto, password: hashedPassword})
