@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { Sofas as SofasModel} from './sofas.model';
-import { ISofasQuery } from './types';
+import { ISofasFilter, ISofasQuery } from './types';
 import { Op } from 'sequelize';
 import { CreateSofasDto } from './dto/create-sofa.dto';
 
@@ -14,15 +14,31 @@ export class SofasService {
 
   async paginateAndFilter(query: ISofasQuery): Promise<{ rows: SofasModel[]; count: number }>{
     const limit = +query.limit
-    const offset = +query.offset * 20
+    const offset = +query.offset * 15
 
-    return this.sofasRepository.findAndCountAll({limit, offset})
+    const filter = {} as Partial<ISofasFilter>
+
+    if(query.priceFrom && query.priceTo){
+      filter.price = {
+        [Op.between] : [+query.priceFrom, +query.priceTo]
+      }
+    }
+
+    if(query.sofas){
+      filter.furniture_brand = JSON.parse(decodeURIComponent(query.sofas))
+    }
+
+    if(query.color){
+      filter.color = JSON.parse(decodeURIComponent(query.color))
+    }
+
+    return this.sofasRepository.findAndCountAll({limit, offset, where: filter})
   }
 
 
   async bestsellers(query: ISofasQuery): Promise<{ rows: SofasModel[]; count: number }>{
     const limit = +query.limit
-    const offset = +query.offset * 20
+    const offset = +query.offset * 15
 
     return await this.sofasRepository.findAndCountAll({where: {bestseller: true}, limit, offset})
   }

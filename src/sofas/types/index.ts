@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {faker} from '@faker-js/faker'
+import { Op } from 'sequelize';
 import { Constructor } from 'sequelize-typescript/dist/shared/types';
 
 
@@ -74,7 +75,17 @@ class Sofa {
 
 export interface ISofasQuery {
   limit: string,
-  offset: string
+  offset: string,
+  sofas: string | undefined,
+  priceFrom: string | undefined,
+  priceTo: string | undefined,
+  color: string | undefined
+}
+
+export interface ISofasFilter {
+  furniture_brand: string | undefined,
+  price: { [Op.between]: number[] },
+  color: string | undefined
 }
 
 
