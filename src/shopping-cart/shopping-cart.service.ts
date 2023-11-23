@@ -34,7 +34,7 @@ export class ShoppingCartService {
     cart.size = item.size
     cart.furniture_brand = item.furniture_brand
     cart.oldPrice = item.oldPrice
-    cart.image = JSON.parse(item.images[0])
+    cart.image = JSON.parse(item.images)[0]
     cart.total_price = item.price
 
     return cart.save()

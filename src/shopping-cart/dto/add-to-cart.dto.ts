@@ -15,6 +15,5 @@ export class AddToCartDto {
 
   @ApiProperty({ example: 1 })
   @IsNumber()
-  @IsNotEmpty()
   readonly itemId: number;
 }

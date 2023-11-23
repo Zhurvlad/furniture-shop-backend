@@ -5,67 +5,68 @@ import { Column, DataType, Model, Table } from 'sequelize-typescript';
 export class ShoppingCart extends Model{
 
   @Column({
-    type: DataType.NUMBER,
-    allowNull: false
+    type: DataType.INTEGER,
   })
   userId:number
 
   @Column({
-    type: DataType.NUMBER,
-    allowNull: false
+    type: DataType.INTEGER,
+    defaultValue: 0,
   })
   itemId:number
 
   @Column({
     type: DataType.STRING,
-    allowNull: false,
   })
   name: string;
 
   @Column({
     type: DataType.INTEGER,
-    allowNull: false,
+    defaultValue: 0,
   })
   price: number;
 
   @Column({
     type: DataType.STRING,
-    allowNull: false,
   })
   color: string;
 
   @Column({
     type: DataType.INTEGER,
-    allowNull: false,
+    defaultValue: 0,
   })
   in_stocks: number;
 
   @Column({
     type: DataType.STRING,
-    allowNull: false,
   })
   size: string[];
 
   @Column({
     type: DataType.STRING,
-    allowNull: false,
   })
   furniture_brand: string;
 
   @Column({
     type: DataType.INTEGER,
+    defaultValue: 0,
   })
   oldPrice: number;
 
   @Column({
     type: DataType.STRING,
-    allowNull: false,
   })
   image: string;
 
-  @Column({defaultValue: 1})
+  @Column({
+    defaultValue: 1,
+    type: DataType.INTEGER
+  })
   count: number;
 
-  @Column({defaultValue: 0})
+  @Column({
+    defaultValue: 0,
+    type: DataType.INTEGER
+  })
   total_price: number;
 }

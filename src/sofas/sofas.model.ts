@@ -67,7 +67,7 @@ export class Sofas extends Model{
     type: DataType.STRING,
     allowNull: false,
   })
-  images: string[];
+  images: string;
 
   @Column({
     type: DataType.BOOLEAN,
