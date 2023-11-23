@@ -8,6 +8,7 @@ import { AuthModule } from './auth/auth.module';
 import { FurnitureModule } from './furniture/furniture.module';
 import { TopPageModule } from './top-page/top-page.module';
 import { SofasModule } from './sofas/sofas.module';
+import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
 
 
 @Module({
@@ -23,6 +24,7 @@ import { SofasModule } from './sofas/sofas.module';
     FurnitureModule,
     TopPageModule,
     SofasModule,
+    ShoppingCartModule,
   ],
 })
 export class AppModule {
