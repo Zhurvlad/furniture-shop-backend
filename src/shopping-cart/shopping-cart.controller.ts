@@ -18,7 +18,7 @@ export class ShoppingCartController {
 
   @ApiTags('ShoppingCart')
   @ApiOkResponse({type: [GetAllResponse]})
-  @UseGuards(AuthenticatedGuard)
+ /* @UseGuards(AuthenticatedGuard)*/
   @HttpCode(HttpStatus.OK)
   @Get(':id')
   getAll(@Param('id') userId: string){
@@ -27,7 +27,7 @@ export class ShoppingCartController {
 
   @ApiTags('ShoppingCart')
   @ApiOkResponse({type: AddToCartResponse})
-  @UseGuards(AuthenticatedGuard)
+  /*@UseGuards(AuthenticatedGuard)*/
   @HttpCode(HttpStatus.CREATED)
   @Post('/add')
   addToCartItem(@Body() addToCartDto: AddToCartDto){
@@ -37,7 +37,7 @@ export class ShoppingCartController {
   @ApiTags('ShoppingCart')
   @ApiOkResponse({type: UpdateCountResponse})
   @ApiBody({type: UpdateCountRequest})
-  @UseGuards(AuthenticatedGuard)
+  /*@UseGuards(AuthenticatedGuard)*/
   @HttpCode(HttpStatus.OK)
   @Patch('/count/:id')
   updateItemCount(@Body() {count} : {count: number}, @Param('id') itemId: string){
@@ -47,7 +47,7 @@ export class ShoppingCartController {
   @ApiTags('ShoppingCart')
   @ApiOkResponse({type: TotalPriceResponse})
   @ApiBody({type: TotalPriceRequest})
-  @UseGuards(AuthenticatedGuard)
+  /*@UseGuards(AuthenticatedGuard)*/
   @HttpCode(HttpStatus.OK)
   @Patch('/total-price/:id')
   updateItemTotalPrice(@Body() {total_price} : {total_price: number}, @Param('id') itemId: string){
@@ -55,7 +55,7 @@ export class ShoppingCartController {
   }
 
   @ApiTags('ShoppingCart')
-  @UseGuards(AuthenticatedGuard)
+  /*@UseGuards(AuthenticatedGuard)*/
   @HttpCode(HttpStatus.OK)
   @Delete('/one/:id')
   removeOne(@Param('id') itemId: string){

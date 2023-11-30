@@ -9,6 +9,7 @@ import { FurnitureModule } from './furniture/furniture.module';
 import { TopPageModule } from './top-page/top-page.module';
 import { SofasModule } from './sofas/sofas.module';
 import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
+import { PaymentModule } from './payment/payment.module';
 
 
 @Module({
@@ -25,6 +26,7 @@ import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
     TopPageModule,
     SofasModule,
     ShoppingCartModule,
+    PaymentModule,
   ],
 })
 export class AppModule {
