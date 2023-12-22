@@ -63,7 +63,7 @@ export class ShoppingCartController {
   }
 
   @ApiTags('ShoppingCart')
-  @UseGuards(AuthenticatedGuard)
+  /*@UseGuards(AuthenticatedGuard)*/
   @HttpCode(HttpStatus.OK)
   @Delete('/all/:id')
   removeAll(@Param('id') userId: string){
