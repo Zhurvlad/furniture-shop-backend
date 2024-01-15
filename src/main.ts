@@ -11,7 +11,7 @@ async function bootstrap() {
 
   app.use(
     session({
-      secret: 'Bilbo-Baggins',
+      secret: 'BilboBaggins',
       resave: false,
       saveUninitialized: false,
     }),)
@@ -21,7 +21,7 @@ async function bootstrap() {
 
   app.enableCors({
     credentials: true,
-    origin: ['http://localhost:3003']
+    origin: ['http://localhost:3001']
   })
 
   const config = new DocumentBuilder()
@@ -36,6 +36,6 @@ async function bootstrap() {
 
   /*app.useGlobalPipes(new ValidateInputPipe());*/
   app.useGlobalPipes(new ValidationPipe());
-  await app.listen(3002);
+  await app.listen(process.env.PORT || 3000);
 }
 bootstrap();

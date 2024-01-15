@@ -1,26 +1,28 @@
 {
   "development": {
-    "username": "root",
-    "password": "123456",
-    "database": "furniture-shop-test",
-    "host": "localhost",
+    "username": "freedb_vladislav",
+    "password": "A@XVM9JPTNe9gH2",
+    "database": "freedb_loft-furniture",
+    "host": "sql.freedb.tech",
     "dialect": "mysql",
     "port": 3306
   },
   "test": {
-    "username": "root",
-    "password": "123456",
-    "database": "furniture-shop-test",
-    "host": "localhost",
+    "username": "freedb_vladislav",
+    "password": "A@XVM9JPTNe9gH2",
+    "database": "freedb_loft-furniture",
+    "host": "sql.freedb.tech",
     "dialect": "mysql",
     "port":  3306
   },
   "production": {
-    "username": "root",
-    "password": "123456",
-    "database": "furniture-shop-test",
-    "host": "localhost",
+    "username": "freedb_vladislav",
+    "password": "A@XVM9JPTNe9gH2",
+    "database": "freedb_loft-furniture",
+    "host": "sql.freedb.tech",
     "dialect": "mysql",
     "port":  3306
   }
 }
+
+
