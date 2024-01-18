@@ -26,7 +26,7 @@ export class PaymentService {
           capture: true,
           confirmation: {
             type: 'redirect',
-            return_url: 'http://localhost:3003/cart'
+            return_url: 'https://loft-furniture-frontend.onrender.com/cart'
           },
           description: makePaymentDto.description
         }
