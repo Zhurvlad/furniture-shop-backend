@@ -1,0 +1,58 @@
+version: '3'
+
+services:
+  frontend:
+    build:
+      context: ../frontend
+      target: runner
+    volumes:
+      - ../frontend:/usr/src/app
+    command: npm run dev
+    ports:
+      - "3003:3003"
+    environment:
+      NODE_ENV: development
+  api:
+    build:
+      dockerfile: Dockerfile
+      context: .
+
+      target: development
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    env_file:
+          - .env
+    restart: always
+    depends_on:
+      - mysql
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 123456
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: furniture-shop-test
+    command:  npm run start:dev
+    ports:
+      - '3002:3002'
+  mysql:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: furniture-shop-test
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 123456
+    volumes:
+      - mysql_data_base:/var/lib/mysql
+      - F:\Prodects\loft-furniture\mysql_database:/var/lib/mysql
+
+    ports:
+      - '3306:3306'
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - '8989:8080'
+
+volumes:
+  mysql_data_base:
