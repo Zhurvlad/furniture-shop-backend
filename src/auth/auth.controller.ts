@@ -1,7 +1,8 @@
 import { Body, Controller, Get, Header, HttpCode, HttpStatus, Post, Request, UseGuards } from '@nestjs/common';
+import { ApiBody, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+
 import { AuthService } from './auth.service';
 import { CreateUserDto } from '../users/dto/create-user.dto';
-import { ApiBody, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { LoginUserRequest, LoginUserResponse, LogOutUserResponse, SignUpUserResponse } from '../users/types';
 import { LocalAuthGuard } from './local.auth.guard';
 

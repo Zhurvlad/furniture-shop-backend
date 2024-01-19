@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { Sofas as SofasModel } from '../sofas/sofas.model';
+
 import { ShoppingCart } from './shopping-cart.model';
 import { UsersService } from '../users/users.service';
 import { SofasService } from '../sofas/sofas.service';

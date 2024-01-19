@@ -1,6 +1,7 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Query, UseGuards } from '@nestjs/common';
-import { SofasService } from './sofas.service';
+import { Controller, Get, Post, Body, Param, Query} from '@nestjs/common';
 import { ApiBody, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+
+import { SofasService } from './sofas.service';
 import {
   BestsellersResponse,
   FindOneRequest,

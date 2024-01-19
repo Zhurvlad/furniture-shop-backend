@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
+import { Op } from 'sequelize';
+
 import { Sofas as SofasModel} from './sofas.model';
 import { ISofasFilter, ISofasQuery } from './types';
-import { Op } from 'sequelize';
-import { CreateSofasDto } from './dto/create-sofa.dto';
 
 @Injectable()
 export class SofasService {

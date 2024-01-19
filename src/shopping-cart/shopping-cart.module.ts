@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
+import { SequelizeModule } from '@nestjs/sequelize';
+
 import { ShoppingCartController } from './shopping-cart.controller';
 import { ShoppingCartService } from './shopping-cart.service';
-import { SequelizeModule } from '@nestjs/sequelize';
 import { ShoppingCart } from './shopping-cart.model';
 import { UsersModule } from '../users/users.module';
 import { SofasModule } from '../sofas/sofas.module';

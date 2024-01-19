@@ -1,9 +1,8 @@
-import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post, UseGuards } from '@nestjs/common';
-import { SofasService } from '../sofas/sofas.service';
-import { ShoppingCartService } from './shopping-cart.service';
-import { AuthenticatedGuard } from '../auth/authenticated.guard';
-import { AddToCartDto } from './dto/add-to-cart.dto';
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post} from '@nestjs/common';
 import { ApiBody, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+
+import { ShoppingCartService } from './shopping-cart.service';
+import { AddToCartDto } from './dto/add-to-cart.dto';
 import {
   AddToCartResponse,
   GetAllResponse, TotalPriceRequest,

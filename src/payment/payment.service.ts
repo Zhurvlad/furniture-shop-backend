@@ -1,6 +1,7 @@
 import { ForbiddenException, Injectable } from '@nestjs/common';
-import { MakePaymentDto } from './dto/make-payment.dto';
 import axios from 'axios';
+
+import { MakePaymentDto } from './dto/make-payment.dto';
 import { checkPaymentDto } from './dto/check-payment.dto';
 
 @Injectable()

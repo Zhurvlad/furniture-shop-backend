@@ -1,6 +1,7 @@
 import {Injectable} from '@nestjs/common';
-import {SequelizeModule, SequelizeOptionsFactory, SequelizeModuleOptions} from '@nestjs/sequelize';
+import {SequelizeOptionsFactory, SequelizeModuleOptions} from '@nestjs/sequelize';
 import {ConfigService} from '@nestjs/config';
+
 import {User} from '../users/users.model';
 
 

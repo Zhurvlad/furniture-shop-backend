@@ -1,29 +1,8 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  HttpCode,
-  HttpStatus,
-  Header,
-  UseGuards, Request,
-} from '@nestjs/common';
-import { UsersService } from './users.service';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
-import { LocalAuthGuard } from '../auth/local.auth.guard';
+import { Controller, Get, UseGuards, Request, } from '@nestjs/common';
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
+
 import { AuthenticatedGuard } from '../auth/authenticated.guard';
-import { ApiBody, ApiCookieAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
-import {
-  LoginCheckResponse,
-  LoginUserRequest,
-  LoginUserResponse,
-  LogOutUserResponse,
-  SignUpUserResponse,
-} from './types';
+import { LoginCheckResponse, } from './types';
 
 @Controller('users')
 export class UsersController {

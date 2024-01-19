@@ -1,9 +1,8 @@
-import { Inject, Injectable } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
+
+import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './users.model';
-import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsersService {
@@ -45,14 +44,4 @@ export class UsersService {
   findOne(filter: {where: {id?: string, username?: string, email?: string}}): Promise<User> {
     return this.userRepository.findOne({...filter});
   }
-
-
-
- /* update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} user`;
-  }*/
 }
